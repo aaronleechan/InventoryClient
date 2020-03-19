@@ -4,15 +4,17 @@ import Header from './header'
 import Footer from './footer'
 import Main from './main'
 import {container} from './style';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const Application = (props) =>{
     return(
         <div style={container}>
-            <Header/>
-                <Router>
+            <Router>
+                <Header/>
                     <Main/>
-                </Router>
-            <Footer/>
+                <Footer/>
+            </Router>
         </div>
     )
 }

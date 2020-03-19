@@ -1,10 +1,13 @@
 import React from 'react';
-import {container} from './home-style'
+import {container,boxContainer} from './home-style'
+import '../index.css'
 
 const Home = (props) =>{
     return(
         <div style={container}>
-            <h1>Home</h1>
+            <div style={boxContainer}>
+                
+            </div>
         </div>
     )
 }
