@@ -1,18 +1,27 @@
 import React,{useState,useEffect} from 'react';
 import '../index.css';
 import {container,inputBox,inputStyle,buttonStyle,formContainer} from './auth-style';
+import firebase from '../../config/firebase'
+import {useHistory} from 'react-router-dom'
+import {withRouter,Redirect} from 'react-router';
 
 const Signup = (props) =>{
-    const[username,setUsername] = useState([])
+    const[email,setEmail] = useState([])
     const[password,setPassword] = useState([])
+    const history = useHistory()
 
-    const handleSubmit = (e) =>{
-        console.log({" User Name ": username})
-        console.log({" password ": password})
+    const handleSubmit = async (e) =>{
         e.preventDefault()
+        try{
+            await firebase.auth().createUserWithEmailAndPassword(email,password);
+            history.push(`/`)
+        }catch(error){
+            alert(error)
+        }
+
     }
 
-    const UpdateUserName = (event)=>{setUsername(event.target.value)}
+    const UpdateEmail = (event)=>{setEmail(event.target.value)}
 
     const UpdatePassword = (event)=>{setPassword(event.target.value)}
 
@@ -22,7 +31,7 @@ const Signup = (props) =>{
                 <div className="word">SIGN UP</div>
                 <form onSubmit={handleSubmit}>
                     <div style={inputBox}>
-                        <input style={inputStyle} placeholder="Email Address" type="text" name="username" value={username} onChange={UpdateUserName}/>
+                        <input style={inputStyle} placeholder="Email Address" type="text" name="email" value={email} onChange={UpdateEmail}/>
                     </div>
 
                     <div style={inputBox}>
@@ -35,4 +44,4 @@ const Signup = (props) =>{
         </div>
     )
 }
-export default Signup
+export default withRouter(Signup)

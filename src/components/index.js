@@ -6,15 +6,18 @@ import Main from './main'
 import {container} from './style';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import {AuthProvider} from './authentication/Auth'
 
 const Application = (props) =>{
     return(
         <div style={container}>
-            <Router>
-                <Header/>
-                    <Main/>
-                <Footer/>
-            </Router>
+            <AuthProvider>
+                <Router>
+                    <Header/>
+                        <Main/>
+                    <Footer/>
+                </Router>
+            </AuthProvider>
         </div>
     )
 }

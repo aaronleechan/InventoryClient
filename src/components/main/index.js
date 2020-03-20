@@ -6,16 +6,18 @@ import ProductList from '../product_list'
 import LogIn from '../authentication/Login-page'
 import SignUp from '../authentication/Signup-page'
 import {container} from './main-style'
+import PrivateRoute from '../provate_route/PrivateRoute'
 
 const Main = (props) =>{
     return(
         <div>
-            <Route exact path="/" render={()=>(<Redirect to="/login"/>)}/>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/login" component={LogIn}/>
-            <Route exact path="/signup" component={SignUp}/>
-            <Route exact path="/productlist" component={ProductList}/>
-            <Route exact path="/productform" component={ProductForm}/>
+            <Switch>
+                <PrivateRoute exact path="/" component={Home}/>
+                <PrivateRoute exact path="/productlist" component={ProductList}/>
+                <PrivateRoute exact path="/productform" component={ProductForm}/>
+                <Route exact path="/login" component={LogIn}/>
+                <Route exact path="/signup" component={SignUp}/>
+            </Switch>
         </div>
     )
 }
