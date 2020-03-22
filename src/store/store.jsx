@@ -1,13 +1,17 @@
-import React, { createContext, useReducer } from 'react'
-import {reducer} from './reducer'
+import React, { createContext, useReducer,useEffect, useState } from 'react'
+import {reducer,completeData} from './reducer'
+import useAsyncReducer from './asyncReducer'
 
-const initialState = {}
+const initialState = {data:[]}
 
 export const Store = createContext(initialState)
 
 export const StoreProvider = ({ children }) => {
+  const [state, dispatch] = useAsyncReducer(reducer, initialState)
   
-  const [state, dispatch] = useReducer(reducer, initialState)
-
-  return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>
+  return (
+    <Store.Provider value={{state, dispatch}}>
+      {children}
+    </Store.Provider>
+  )
 }
