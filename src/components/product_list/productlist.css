@@ -1,0 +1,12 @@
+.action-column{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0px 20px 0px 5px
+}
+
+.action-column button{
+    border: 0px;
+    padding: 0 5px;
+    background: transparent;
+    cursor: pointer;
+}

@@ -10,9 +10,21 @@ const ProductList = () =>{
     const {currentUser} = useContext(AuthContext)
     const productList = useContext(Store).state.data
     const {dispatch} = useContext(Store)
-    const [columns,setColumns] = useState(getColumn())
+    const [columns,setColumns] = useState(getColumn({detailData,editData,deleteData}))
 
     useEffect(()=>{dispatch(getProduct)},[])
+
+    function editData(row){
+        console.log({" Edit Data ": row})
+    }
+
+    function deleteData(row){
+        console.log({" Delete Data ": row})
+    }
+
+    function detailData(row){
+        console.log({" Detail Data ": row})
+    }
     
     return(
         <div>
