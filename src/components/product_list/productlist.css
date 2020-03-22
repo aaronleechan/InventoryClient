@@ -10,3 +10,9 @@
     background: transparent;
     cursor: pointer;
 }
+
+.label{
+    font-size: 75px;
+    font-weight: 600;
+    color: white;
+}

@@ -5,6 +5,7 @@ import {Store} from '../../store/store';
 import {getProduct} from '../../store/actions';
 import {getColumn} from './column';
 import React_Table from '../common/React_Table/React_Table'
+import './productlist.css';
 
 const ProductList = () =>{
     const {currentUser} = useContext(AuthContext)
@@ -28,7 +29,7 @@ const ProductList = () =>{
     
     return(
         <div>
-            <h1>Product List</h1>
+            <label className="label">Inventory</label>
             <React_Table data={productList} columns={columns}/>
         </div>
     )
